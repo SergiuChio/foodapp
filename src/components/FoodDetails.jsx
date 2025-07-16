@@ -22,35 +22,59 @@ export default function FoodDetails({ foodId }) {
     <div>
       <div className={styles.recipeCard}>
         <h1 className={styles.recipeName}>{food.title}</h1>
-        <img className={styles.recipeImage} src={food.image} alt="" />
+        <img className={styles.recipeImage} src={food.image} alt={food.title} />
         <div className={styles.recipeDetails}>
           <span>
             <strong>
-              {String.fromCodePoint(0x1f559)}
+              <span role="img" aria-label="cooking time">
+                {String.fromCodePoint(0x1f559)}
+              </span>
               {food.readyInMinutes} Minutes
             </strong>
           </span>
           <span>
-            {String.fromCodePoint(0x1f46a)}
+            <span role="img" aria-label="number of servings">
+              {String.fromCodePoint(0x1f46a)}
+            </span>
             <strong>Serves {food.servings}</strong>
           </span>
           <span>
             <strong>
-              {food.vegetarian
-                ? `${String.fromCodePoint(0x1f955)} Vegetarian`
-                : `${String.fromCodePoint(0x1f356)} Non-Vegetarian`}
+              {food.vegetarian ? (
+                <>
+                  <span role="img" aria-label="vegetarian food">
+                    {String.fromCodePoint(0x1f955)}
+                  </span>{" "}
+                  Vegetarian
+                </>
+              ) : (
+                <>
+                  <span role="img" aria-label="non-vegetarian food">
+                    {String.fromCodePoint(0x1f356)}
+                  </span>{" "}
+                  Non-Vegetarian
+                </>
+              )}
             </strong>
           </span>
           <span>
             <strong>
-              {food.vegan ? `${String.fromCodePoint(0x1f404)} Vegan` : ``}
+              {food.vegan ? (
+                <>
+                  <span role="img" aria-label="vegan food">
+                    {String.fromCodePoint(0x1f404)}
+                  </span>{" "}
+                  Vegan
+                </>
+              ) : (
+                ``
+              )}
             </strong>
           </span>
         </div>
         <div>
-          $
           <span>
-            <strong>{food.pricePerServing / 100} Per serving</strong>
+            <strong>${food.pricePerServing / 100} Per serving</strong>
           </span>
         </div>
         <div>

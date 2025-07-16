@@ -23,7 +23,11 @@ export default function Search({ foodData, setFoodData }) {
 
   return (
     <div className={styles.searchContainer}>
+      <label htmlFor="search-input" className={styles.visuallyHidden}>
+        Search for a recipe
+      </label>
       <input
+        id="search-input"
         className={styles.input}
         value={query}
         onChange={(e) => processChange(e.target.value)}
